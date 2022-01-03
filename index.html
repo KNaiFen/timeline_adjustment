@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+  <textarea name="input" id="inputBox" rows="15" style="width:100%"> </textarea>
+  <div>
+    <input type="radio" id="timeChoice1" name="timeMove" value="increaseTime" checked>
+    <label for="timeChoice1">增加时间</label>
+
+    <input type="radio" id="timeChoice2" name="timeMove" value="decreaseTime">
+    <label for="timeChoice2">减少时间</label>
+
+    <input type="number" id="timeBoxH" name="timeBoxH" value="0" min="0" max="5" style="width: 40px" />
+    :
+    <input type="number" id="timeBoxM" name="timeBoxM" value="0" min="0" max="59" style="width: 40px" />
+    :
+    <input type="number" id="timeBoxS" name="timeBoxS" value="0" min="0" max="59" style="width: 40px" />
+    <button id="execButton">调轴</button>
+    <button id="copyButton">复制</button>
+  </div>
+  <textarea name="output" id="outputBox" rows="15" style="width:100%"> </textarea>
+</body>
+<script>
+  const inputBox = document.getElementById("inputBox");
+  const outputBox = document.getElementById("outputBox");
+  const execButton = document.getElementById("execButton");
+  const copyButton = document.getElementById("copyButton");
+  const timeBoxH = document.getElementById("timeBoxH");
+  const timeBoxM = document.getElementById("timeBoxM");
+  const timeBoxS = document.getElementById("timeBoxS");
+  const timeChoice1 = document.getElementById("timeChoice1");
+
+  const timeRegex = /^(\d{1})\:([0-5]{1}\d{1})\:([0-5]{1}\d{1})$/
+  const timeRegex2 = /^([0-5]{1}\d{1})\:([0-5]{1}\d{1})$/
+  execButton.onclick = function () {
+    const inputStrList = inputBox.value.split(/[(\r\n)\r\n]+/);
+    var dH = parseInt(timeBoxH.value)
+    var dM = parseInt(timeBoxM.value)
+    var dS = parseInt(timeBoxS.value)
+    if (!timeChoice1.checked) {
+      dH *= -1;
+      dM *= -1;
+      dS *= -1;
+    }
+
+    var outputStrList = [];
+    inputStrList.forEach(inputStrItem => {
+      const inputPart = inputStrItem.split(' ');
+      var outputPart = [];
+      inputPart.forEach(part => {
+        if (part) {
+          if (timeRegex.test(part) || timeRegex2.test(part)) {
+            const timePart = part.split(":");
+            var h = 0,
+              m = 0,
+              s = 0;
+            if (timePart.length == 3) {
+              h = parseInt(timePart[0]) + dH;
+              m = parseInt(timePart[1]) + dM;
+              s = parseInt(timePart[2]) + dS;
+            } else {
+              h = dH
+              m = parseInt(timePart[0]) + dM;
+              s = parseInt(timePart[1]) + dS;
+            }
+
+            while (s < 0) {
+              s += 60;
+              m -= 1;
+            }
+            while (s >= 60) {
+              s -= 60;
+              m += 1;
+            }
+            while (m < 0) {
+              m += 60;
+              h -= 1;
+            }
+            while (m >= 60) {
+              m -= 60;
+              h += 1;
+            }
+            if (h < 0) {
+              h = 0;
+              m = 0;
+              s = 0;
+            }
+
+            var timeStr = "";
+            if (h != 0) {
+              timeStr = timeStr + h + ":";
+            }
+
+            if (m < 10) {
+              timeStr = timeStr + "0" + m + ":";
+            } else {
+              timeStr = timeStr + m + ":";
+            }
+
+            if (s < 10) {
+              timeStr = timeStr + "0" + s;
+            } else {
+              timeStr = timeStr + s;
+            }
+
+            outputPart.push(timeStr);
+          } else {
+            outputPart.push(part);
+          }
+        }
+      })
+      console.log(outputPart)
+      outputStrList.push(outputPart.join(" "));
+    });
+    outputBox.value = outputStrList.join("\n");
+  }
+  copyButton.onclick = function () {
+    outputBox.select();
+    document.execCommand('copy');
+  }
+</script>
+
+</html>
