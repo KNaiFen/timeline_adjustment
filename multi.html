@@ -6,54 +6,63 @@
 </head>
 
 <body>
-  <textarea name="input1" id="inputBox1" rows="15" style="width:24%"> </textarea>
-  <textarea name="input2" id="inputBox2" rows="15" style="width:24%"> </textarea>
-  <textarea name="input3" id="inputBox3" rows="15" style="width:24%"> </textarea>
-  <textarea name="input4" id="inputBox4" rows="15" style="width:24%"> </textarea>
+  <table style="width:100%">
+    <tr colspan="4">
+      <div>
+        参考开场时间:
+        <input type="number" id="rawTimeBoxH" value="0" min="0" max="5" style="width: 40px" />:
+        <input type="number" id="rawTimeBoxM" value="0" min="0" max="59" style="width: 40px" />:
+        <input type="number" id="rawTimeBoxS" value="0" min="0" max="59" style="width: 40px" />,
+        参考P1总时长:
+        <input type="number" id="rawP1TimeBoxH" value="0" min="0" max="5" style="width: 40px" />:
+        <input type="number" id="rawP1TimeBoxM" value="0" min="0" max="59" style="width: 40px" />:
+        <input type="number" id="rawP1TimeBoxS" value="0" min="0" max="59" style="width: 40px" />,
+        参考P2总时长:
+        <input type="number" id="rawP2TimeBoxH" value="0" min="0" max="5" style="width: 40px" />:
+        <input type="number" id="rawP2TimeBoxM" value="0" min="0" max="59" style="width: 40px" />:
+        <input type="number" id="rawP2TimeBoxS" value="0" min="0" max="59" style="width: 40px" />,
+        参考P3总时长:
+        <input type="number" id="rawP3TimeBoxH" value="0" min="0" max="5" style="width: 40px" />:
+        <input type="number" id="rawP3TimeBoxM" value="0" min="0" max="59" style="width: 40px" />:
+        <input type="number" id="rawP3TimeBoxS" value="0" min="0" max="59" style="width: 40px" />,
+        (不用填最末P时长)
+      </div>
+    </tr>
+    <tr colspan="4">
+      <div>
+        目标开场时间:
+        <input type="number" id="targetTimeBoxH" value="0" min="0" max="5" style="width: 40px" />:
+        <input type="number" id="targetTimeBoxM" value="0" min="0" max="59" style="width: 40px" />:
+        <input type="number" id="targetTimeBoxS" value="0" min="0" max="59" style="width: 40px" />,
+        目标P1总时长:
+        <input type="number" id="targetP1TimeBoxH" value="0" min="0" max="5" style="width: 40px" />:
+        <input type="number" id="targetP1TimeBoxM" value="0" min="0" max="59" style="width: 40px" />:
+        <input type="number" id="targetP1TimeBoxS" value="0" min="0" max="59" style="width: 40px" />,
+        目标P2总时长:
+        <input type="number" id="targetP2TimeBoxH" value="0" min="0" max="5" style="width: 40px" />:
+        <input type="number" id="targetP2TimeBoxM" value="0" min="0" max="59" style="width: 40px" />:
+        <input type="number" id="targetP2TimeBoxS" value="0" min="0" max="59" style="width: 40px" />,
+        目标P3总时长:
+        <input type="number" id="targetP3TimeBoxH" value="0" min="0" max="5" style="width: 40px" />:
+        <input type="number" id="targetP3TimeBoxM" value="0" min="0" max="59" style="width: 40px" />:
+        <input type="number" id="targetP3TimeBoxS" value="0" min="0" max="59" style="width: 40px" />,
+        <button id="execButton">调轴</button>
+      </div>
+    </tr>
+    <tr>
+      <td><textarea name="input1" id="inputBox1" rows="15" style="width:95%" placeholder="参考P1时间轴" value=""> </textarea></td>
+      <td><textarea name="input2" id="inputBox2" rows="15" style="width:95%" placeholder="参考P2时间轴" value=""> </textarea></td>
+      <td><textarea name="input3" id="inputBox3" rows="15" style="width:95%" placeholder="参考P3时间轴" value=""> </textarea></td>
+      <td><textarea name="input4" id="inputBox4" rows="15" style="width:95%" placeholder="参考P4时间轴" value=""> </textarea></td>
+    </tr>
+    <tr>
+      <td><textarea name="output1" id="outputBox1" rows="15" style="width:95%" placeholder="目标P1时间轴" value=""> </textarea></td>
+      <td><textarea name="output2" id="outputBox2" rows="15" style="width:95%" placeholder="目标P2时间轴" value=""> </textarea></td>
+      <td><textarea name="output3" id="outputBox3" rows="15" style="width:95%" placeholder="目标P3时间轴" value=""> </textarea></td>
+      <td><textarea name="output4" id="outputBox4" rows="15" style="width:95%" placeholder="目标P4时间轴" value=""> </textarea></td>
+    </tr>
+  </table>
 
-  <div>
-    参考开场时间:
-    <input type="number" id="rawTimeBoxH" value="0" min="0" max="5" style="width: 40px" />:
-    <input type="number" id="rawTimeBoxM" value="0" min="0" max="59" style="width: 40px" />:
-    <input type="number" id="rawTimeBoxS" value="0" min="0" max="59" style="width: 40px" />,
-    参考P1:
-    <input type="number" id="rawP1TimeBoxH" value="5" min="0" max="5" style="width: 40px" />:
-    <input type="number" id="rawP1TimeBoxM" value="0" min="0" max="59" style="width: 40px" />:
-    <input type="number" id="rawP1TimeBoxS" value="0" min="0" max="59" style="width: 40px" />,
-    参考P2:
-    <input type="number" id="rawP2TimeBoxH" value="5" min="0" max="5" style="width: 40px" />:
-    <input type="number" id="rawP2TimeBoxM" value="0" min="0" max="59" style="width: 40px" />:
-    <input type="number" id="rawP2TimeBoxS" value="0" min="0" max="59" style="width: 40px" />,
-    参考P3:
-    <input type="number" id="rawP3TimeBoxH" value="5" min="0" max="5" style="width: 40px" />:
-    <input type="number" id="rawP3TimeBoxM" value="0" min="0" max="59" style="width: 40px" />:
-    <input type="number" id="rawP3TimeBoxS" value="0" min="0" max="59" style="width: 40px" />,
-  </div>
-
-  <div>
-    目标开场时间:
-    <input type="number" id="targetTimeBoxH" value="0" min="0" max="5" style="width: 40px" />:
-    <input type="number" id="targetTimeBoxM" value="0" min="0" max="59" style="width: 40px" />:
-    <input type="number" id="targetTimeBoxS" value="0" min="0" max="59" style="width: 40px" />,
-    目标P1:
-    <input type="number" id="targetP1TimeBoxH" value="5" min="0" max="5" style="width: 40px" />:
-    <input type="number" id="targetP1TimeBoxM" value="0" min="0" max="59" style="width: 40px" />:
-    <input type="number" id="targetP1TimeBoxS" value="0" min="0" max="59" style="width: 40px" />,
-    目标P2:
-    <input type="number" id="targetP2TimeBoxH" value="5" min="0" max="5" style="width: 40px" />:
-    <input type="number" id="targetP2TimeBoxM" value="0" min="0" max="59" style="width: 40px" />:
-    <input type="number" id="targetP2TimeBoxS" value="0" min="0" max="59" style="width: 40px" />,
-    目标P3:
-    <input type="number" id="targetP3TimeBoxH" value="5" min="0" max="5" style="width: 40px" />:
-    <input type="number" id="targetP3TimeBoxM" value="0" min="0" max="59" style="width: 40px" />:
-    <input type="number" id="targetP3TimeBoxS" value="0" min="0" max="59" style="width: 40px" />,
-    <button id="execButton">调轴</button>
-  </div>
-
-  <textarea name="output1" id="outputBox1" rows="15" style="width:24%"> </textarea>
-  <textarea name="output2" id="outputBox2" rows="15" style="width:24%"> </textarea>
-  <textarea name="output3" id="outputBox3" rows="15" style="width:24%"> </textarea>
-  <textarea name="output4" id="outputBox4" rows="15" style="width:24%"> </textarea>
 </body>
 <script>
   const inputBox1 = document.getElementById("inputBox1");
@@ -100,6 +109,15 @@
   const targetP3TimeBoxM = document.getElementById("targetP3TimeBoxM");
   const targetP3TimeBoxS = document.getElementById("targetP3TimeBoxS");
 
+  inputBox1.value = "";
+  inputBox2.value = "";
+  inputBox3.value = "";
+  inputBox4.value = "";
+
+  outputBox1.value = "";
+  outputBox2.value = "";
+  outputBox3.value = "";
+  outputBox4.value = "";
 
   const timeRegex = /^(\d{1})\:([0-5]{1}\d{1})\:([0-5]{1}\d{1})$/
   const timeRegex2 = /^([0-5]{1}\d{1})\:([0-5]{1}\d{1})$/
@@ -109,16 +127,33 @@
     const inputStrList3 = inputBox3.value.split(/[(\r\n)\r\n]+/);
     const inputStrList4 = inputBox4.value.split(/[(\r\n)\r\n]+/);
 
-    const offsetRaw1 = -(parseInt(rawTimeBoxH.value) * 3600 + parseInt(rawTimeBoxM.value) * 60 + parseInt(rawTimeBoxS.value));
-    const offsetRaw2 = offsetRaw1 + parseInt(rawP1TimeBoxH.value) * 3600 + parseInt(rawP1TimeBoxM.value) * 60 + parseInt(rawP1TimeBoxS.value);
-    const offsetRaw3 = offsetRaw2 + parseInt(rawP2TimeBoxH.value) * 3600 + parseInt(rawP2TimeBoxM.value) * 60 + parseInt(rawP2TimeBoxS.value);
-    const offsetRaw4 = offsetRaw3 + parseInt(rawP3TimeBoxH.value) * 3600 + parseInt(rawP3TimeBoxM.value) * 60 + parseInt(rawP3TimeBoxS.value);
+    const offsetRaw1 = -(parseInt(rawTimeBoxH.value) * 3600 + parseInt(rawTimeBoxM.value) * 60 + parseInt(rawTimeBoxS
+      .value));
+    const offsetRaw2 = offsetRaw1 + parseInt(rawP1TimeBoxH.value) * 3600 + parseInt(rawP1TimeBoxM.value) * 60 +
+      parseInt(rawP1TimeBoxS.value);
+    const offsetRaw3 = offsetRaw2 + parseInt(rawP2TimeBoxH.value) * 3600 + parseInt(rawP2TimeBoxM.value) * 60 +
+      parseInt(rawP2TimeBoxS.value);
+    const offsetRaw4 = offsetRaw3 + parseInt(rawP3TimeBoxH.value) * 3600 + parseInt(rawP3TimeBoxM.value) * 60 +
+      parseInt(rawP3TimeBoxS.value);
     const offsetRaw = [offsetRaw1, offsetRaw2, offsetRaw3, offsetRaw4];
 
-    const offsetTarget1 = -(parseInt(targetTimeBoxH.value) * 3600 + parseInt(targetTimeBoxM.value) * 60 + parseInt(targetTimeBoxS.value));
-    const offsetTarget2 = offsetTarget1 + parseInt(targetP1TimeBoxH.value) * 3600 + parseInt(targetP1TimeBoxM.value) * 60 + parseInt(targetP1TimeBoxS.value);
-    const offsetTarget3 = offsetTarget2 + parseInt(targetP2TimeBoxH.value) * 3600 + parseInt(targetP2TimeBoxM.value) * 60 + parseInt(targetP2TimeBoxS.value);
-    const offsetTarget4 = offsetTarget3 + parseInt(targetP3TimeBoxH.value) * 3600 + parseInt(targetP3TimeBoxM.value) * 60 + parseInt(targetP3TimeBoxS.value);
+    const offsetTarget1 = -(parseInt(targetTimeBoxH.value) * 3600 + parseInt(targetTimeBoxM.value) * 60 + parseInt(
+      targetTimeBoxS.value));
+    var local1 = parseInt(targetP1TimeBoxH.value) * 3600 + parseInt(targetP1TimeBoxM.value) * 60 + parseInt(
+      targetP1TimeBoxS.value);
+    if (local1 == 0)
+      local1 = Infinity
+    const offsetTarget2 = offsetTarget1 + local1;
+    var local2 = parseInt(targetP2TimeBoxH.value) * 3600 + parseInt(targetP2TimeBoxM.value) * 60 + parseInt(
+      targetP2TimeBoxS.value);
+    if (local2 == 0)
+      local2 = Infinity
+    const offsetTarget3 = offsetTarget2 + local2;
+    var local3 = parseInt(targetP3TimeBoxH.value) * 3600 + parseInt(targetP3TimeBoxM.value) * 60 + parseInt(
+      targetP3TimeBoxS.value);
+    if (local3 == 0)
+      local3 = Infinity
+    const offsetTarget4 = offsetTarget3 + local3;
 
     var outputStrList1 = [];
     var outputStrList2 = [];
@@ -130,7 +165,12 @@
       const localOffset = offsetRaw[partIdx];
 
       inputStrList.forEach(inputStrItem => {
-        const outputPart = [[], [], [], []];
+        const outputPart = [
+          [],
+          [],
+          [],
+          []
+        ];
         const inputPart = inputStrItem.split(' ');
         inputPart.forEach(part => {
           if (part) {
@@ -150,21 +190,21 @@
 
               // check which part
               var targetTime = 0;
-              if (rawTime > offsetTarget4) {
-                targetTime = rawTime - offsetTarget4;
-                currentDispatch = 3;
-              } else if (rawTime > offsetTarget3) {
-                targetTime = rawTime - offsetTarget3;
-                currentDispatch = 2;
-              } else if (rawTime > offsetTarget2) {
-                targetTime = rawTime - offsetTarget2;
-                currentDispatch = 1;
-              } else if (rawTime > offsetTarget1) {
-                targetTime = rawTime - offsetTarget1;
-                currentDispatch = 0;
-              } else {
+              if (rawTime < offsetTarget1) {
                 targetTime = 0;
                 currentDispatch = 0;
+              } else if (rawTime < offsetTarget2) {
+                targetTime = rawTime - offsetTarget1;
+                currentDispatch = 0;
+              } else if (rawTime < offsetTarget3) {
+                targetTime = rawTime - offsetTarget2;
+                currentDispatch = 1;
+              } else if (rawTime < offsetTarget4) {
+                targetTime = rawTime - offsetTarget3;
+                currentDispatch = 2;
+              } else {
+                targetTime = rawTime - offsetTarget4;
+                currentDispatch = 3;
               }
 
               var timeStr = "";
@@ -186,8 +226,7 @@
                 timeStr = timeStr + ss;
               }
               outputPart[currentDispatch].push(timeStr);
-            }
-            else {
+            } else {
               outputPart[currentDispatch].push(part);
             }
           }
@@ -213,7 +252,6 @@
     outputBox3.value = outputStrList3.join("\n");
     outputBox4.value = outputStrList4.join("\n");
   }
-
 </script>
 
 </html>
