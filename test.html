@@ -4,15 +4,16 @@
 <script>
   var art = new Artplayer({
     container: document.querySelector('.artplayer-app'),
-    url: 'https://jsxm.sharepoint.cn/sites/nf-asoul/_layouts/15/download.aspx?UniqueId=f83e9fde-5601-481b-80eb-5b52d8f54a54&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvanN4bS5zaGFyZXBvaW50LmNuQGE4Y2NjNDgzLTY1NjktNDlhMC1hNjYxLWQ2YTFmMTViOWZhMSIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2NDg1NTE2ODYiLCJleHAiOiIxNjQ4NTU1Mjg2IiwiZW5kcG9pbnR1cmwiOiJoeFBwSFllUTZwaTFWa21YTXBBV0dERmoxWDd4bTBiaUExM3o2QkVBUjlRPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMTI5IiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJNVFZoT0RNeU9HTXRNVEZtTmkwMFl6Qm1MV0ZqTkdVdE16azJZMkZsTWpZeFlqUTEiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWVRCa00yTm1OVEl0WWpWaFppMDBPV013TFRneE4yVXRaakU0T0RJME16QTVZMll5IiwiYXBwX2Rpc3BsYXluYW1lIjoiQVNPVUwtQ04yIiwiYXBwaWQiOiJiZjM1OGQ4MC1kMWI5LTQ0NzktOTcxYi03ZjMxYzE0ZTNhNDkiLCJ0aWQiOiJhOGNjYzQ4My02NTY5LTQ5YTAtYTY2MS1kNmExZjE1YjlmYTEiLCJ1cG4iOiJta25haWZlbkBhc2YuaW5rIiwicHVpZCI6IjEwMDMzMjMwQzY0NkFEODUiLCJjYWNoZWtleSI6IjBoLmZ8bWVtYmVyc2hpcHwxMDAzMzIzMGM2NDZhZDg1QGxpdmUuY29tIiwic2NwIjoiYWxsc2l0ZXMucmVhZCBhbGxzaXRlcy53cml0ZSIsInR0IjoiMiIsInVzZVBlcnNpc3RlbnRDb29raWUiOm51bGwsImlwYWRkciI6IjUyLjEzMC4xMC4xNjEifQ.ZWtETVZtS2M2c3Q2UW1LWjRhQkpySEx1T2g2SnRFdXRHSlowc1RIdml6ND0&ApiVersion=2.0',
+    url: 'https://jsxm.sharepoint.cn/sites/nf-asoul/_layouts/15/download.aspx?UniqueId=2e8c4432-ee6c-455d-b53d-4d0eb7870a66&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvanN4bS5zaGFyZXBvaW50LmNuQGE4Y2NjNDgzLTY1NjktNDlhMC1hNjYxLWQ2YTFmMTViOWZhMSIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2NDg1Njg4NDQiLCJleHAiOiIxNjQ4NTcyNDQ0IiwiZW5kcG9pbnR1cmwiOiJ0WG9abW16QjI4cTV3TnhjVzAyWTJsMzdVMmJjNlFlSExUMUVETUZjeTFJPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMTI5IiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJaalU0WlRFME1qZ3RPR0psT0MwMFptUTFMV0V3WTJJdE1ESTJOREZoTnpJMU4yRTQiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWVRCa00yTm1OVEl0WWpWaFppMDBPV013TFRneE4yVXRaakU0T0RJME16QTVZMll5IiwiYXBwX2Rpc3BsYXluYW1lIjoiTkYtQVNPVUwiLCJhcHBpZCI6Ijk4ZGU0ZjE0LTZkMjUtNDAzMS1hNmVmLWEwMmUxMzQ0OTMwYyIsInRpZCI6ImE4Y2NjNDgzLTY1NjktNDlhMC1hNjYxLWQ2YTFmMTViOWZhMSIsInVwbiI6ImtuYWlmZW5AYXNmLmluayIsInB1aWQiOiIxMDAzMzIzMEM2NDZBRDg0IiwiY2FjaGVrZXkiOiIwaC5mfG1lbWJlcnNoaXB8MTAwMzMyMzBjNjQ2YWQ4NEBsaXZlLmNvbSIsInNjcCI6ImFsbHNpdGVzLnJlYWQgYWxsc2l0ZXMud3JpdGUiLCJ0dCI6IjIiLCJ1c2VQZXJzaXN0ZW50Q29va2llIjpudWxsLCJpcGFkZHIiOiI0MC43Mi43NC4xOTIifQ.emZVUnh3NitKNUdHVkhPSjZ1d0IycFVPNFliL09NNEV3U1krTmJXWE9EMD0&ApiVersion=2.0',
     plugins: [
       artplayerPluginDanmuku({
-        danmuku: 'https://dm.asdanmaku.com/Xml/2021.12.11 【A-SOUL】周年特别直播.xml',
+        danmuku: 'https://dm.asdanmaku.com/Xml/2022.01.12 珈乐 小狼水吧-拉乐摆.xml',
         speed: 11, // 全局持续时间
         opacity: 0.7, // 全局透明度
         size: 30, // 全局字体大小
         maxlength: 100, // 全局最大长度
         synchronousPlayback: true, // 是否同步到播放速度
+        margin: [0, 0]
       }),
     ],
     settings: [{
@@ -66,7 +67,7 @@
         onSelect: function (item) {
           art.plugins.artplayerPluginDanmuku.config({
             fontSize: item.size,
-          });
+          }).margin[1] = art.height / 2;
         },
       },
       {
@@ -98,7 +99,7 @@
         onSelect: function (item) {
           art.plugins.artplayerPluginDanmuku.config({
             opacity: item.opacity,
-          });
+          }).margin[1] = art.height / 2;
         },
       }
     ],
@@ -116,7 +117,12 @@
     fullscreenWeb: true,
   });
 
-  fetch('https://asoul.knaifen.workers.dev/ASOUL-REC-二周年/PBF书签文件/2021.12.11 【A-SOUL】周年特别直播.pbf')
+  pluginOption = art.plugins.artplayerPluginDanmuku.config().option;
+  art.on('resize', () => {
+    pluginOption.margin[1] = art.height / 2;
+  });
+
+  fetch('https://asoul.knaifen.workers.dev/ASOUL-REC-二周年/PBF书签文件/2022.01.12 珈乐 小狼水吧-拉乐摆.pbf')
     .then(response => response.text())
     .then(rawPBFStr => {
       var highlight = []
