@@ -1,0 +1,99 @@
+<div class="artplayer-app" style="width: auto; height: 60vh; position: relative;"></div>
+<script src="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/artplayer-plugin-danmuku/dist/artplayer-plugin-danmuku.js"></script>
+<script>
+  var art = new Artplayer({
+    container: document.querySelector('.artplayer-app'),
+    url: 'https://jsxm.sharepoint.cn/sites/nf-asoul/_layouts/15/download.aspx?UniqueId=f83e9fde-5601-481b-80eb-5b52d8f54a54&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvanN4bS5zaGFyZXBvaW50LmNuQGE4Y2NjNDgzLTY1NjktNDlhMC1hNjYxLWQ2YTFmMTViOWZhMSIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2NDg1MzMyNDgiLCJleHAiOiIxNjQ4NTM2ODQ4IiwiZW5kcG9pbnR1cmwiOiJoeFBwSFllUTZwaTFWa21YTXBBV0dERmoxWDd4bTBiaUExM3o2QkVBUjlRPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMTI5IiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJaR00wTUdSa09XTXRaRGMzTlMwME5UaGlMVGs0TTJJdE1XRXlOREl4Wm1JMVpXRm0iLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWVRCa00yTm1OVEl0WWpWaFppMDBPV013TFRneE4yVXRaakU0T0RJME16QTVZMll5IiwiYXBwX2Rpc3BsYXluYW1lIjoiQVNPVUwtQ04xIiwiYXBwaWQiOiI4MDUzOTM4Mi1lOWYzLTRhOGItYmMwYi02ZDg3ZTMzYTQyYTIiLCJ0aWQiOiJhOGNjYzQ4My02NTY5LTQ5YTAtYTY2MS1kNmExZjE1YjlmYTEiLCJ1cG4iOiJrbmFpZmVuQGFzZi5pbmsiLCJwdWlkIjoiMTAwMzMyMzBDNjQ2QUQ4NCIsImNhY2hla2V5IjoiMGguZnxtZW1iZXJzaGlwfDEwMDMzMjMwYzY0NmFkODRAbGl2ZS5jb20iLCJzY3AiOiJhbGxzaXRlcy5yZWFkIGFsbHNpdGVzLndyaXRlIiwidHQiOiIyIiwidXNlUGVyc2lzdGVudENvb2tpZSI6bnVsbCwiaXBhZGRyIjoiNTIuMTMwLjEwLjE2MiJ9.WkJsWkw2dEZ0V3J6NDZMbHZmOGNwN3c2c3FpOEluWnlLRXFHdmoxdjRrdz0&ApiVersion=2.0',
+    plugins: [
+      artplayerPluginDanmuku({
+        danmuku: 'https://dm.asdanmaku.com/Xml/2021.12.11 【A-SOUL】周年特别直播.xml',
+        speed: 11, // 全局持续时间
+        opacity: 0.7, // 全局透明度
+        size: 30, // 全局字体大小
+        maxlength: 100, // 全局最大长度
+        synchronousPlayback: true, // 是否同步到播放速度
+      }),
+    ],
+    controls: [{
+        position: 'right',
+        html: '隐藏弹幕',
+        click: function (_, event) {
+          if (art.plugins.artplayerPluginDanmuku.isHide) {
+            art.plugins.artplayerPluginDanmuku.show();
+            event.target.innerText = '隐藏弹幕';
+          } else {
+            art.plugins.artplayerPluginDanmuku.hide();
+            event.target.innerText = '显示弹幕';
+          }
+        },
+      },
+      {
+        position: 'right',
+        html: '弹幕大小：<input type="range" min="12" max="50" step="1" value="30">',
+        style: {
+          display: 'flex',
+          alignItems: 'center',
+        },
+        mounted: function ($setting) {
+          const $range = $setting.querySelector('input[type=range]');
+          $range.addEventListener('change', () => {
+            art.plugins.artplayerPluginDanmuku.config({
+              fontSize: Number($range.value),
+            });
+          });
+        },
+      },
+      {
+        position: 'right',
+        html: '&nbsp;&nbsp;&nbsp;弹幕透明度：<input type="range" min="0" max="1" step="0.01" value="0.7">',
+        style: {
+          display: 'flex',
+          alignItems: 'center',
+        },
+        mounted: function ($setting) {
+          const $range = $setting.querySelector('input[type=range]');
+          $range.addEventListener('change', () => {
+            art.plugins.artplayerPluginDanmuku.config({
+              opacity: Number($range.value),
+            });
+          });
+        },
+      },
+    ],
+    setting: false,
+    whitelist: ['*'],
+    autoSize: true,
+    autoMini: true,
+    flip: true,
+    volume: 0.5,
+    rotate: true,
+    playbackRate: true,
+    hotkey: true,
+    pip: true,
+    fullscreen: true,
+    fullscreenWeb: true,
+  });
+
+  fetch('https://asoul.knaifen.workers.dev/ASOUL-REC-二周年/PBF书签文件/2021.12.11 【A-SOUL】周年特别直播.pbf')
+  .then(response =>  response.text())
+  .then(rawPBFStr => {
+    var highlight = []
+
+    var rawPBFList = rawPBFStr.split(/[(\r\n)\r\n]+/);
+    rawPBFList.shift()
+    rawPBFList.forEach(PBFItem => {
+      if (!PBFItem) {
+        return
+      }
+      var PBFParts = PBFItem.split('*')
+      var timeMarker = PBFParts.shift()
+      var timeMarkerParts = timeMarker.split('=')
+      var time = parseInt(timeMarkerParts[1]) / 1000
+      var text = PBFParts[0]
+
+      highlight.push({"time": time, "text": text});
+    });
+    art.option.highlight = highlight;
+  })
+</script>
