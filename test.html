@@ -112,6 +112,7 @@
                   },
                 ],
                 onSelect: function (item) {
+                  danmaku_area = item.danmaku_area;
                   art.plugins.artplayerPluginDanmuku.config().option.margin[1] = art.height * item.danmaku_area;
                 },
               },
