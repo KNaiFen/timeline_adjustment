@@ -48,7 +48,7 @@
       <div style="padding: 1rem 1rem;">
         <div>
           <div class="artplayer-app" style="width: auto; height: 60vh; position: relative;"></div>
-          <table class="timeline" cellspacing="10px"></table>
+          <table class="timeline" cellpadding="10px" cellspacing="0"></table>
         </div>
         <script>
           var danmaku_area = 0.05
@@ -246,6 +246,11 @@
               art.option.highlight = highlight;
             });
         </script>
+        <style>
+          .timeline tr:hover td{
+            background-color:#cccccc;
+          }
+        </style>
       </div>
     </div>
     <div class=download-button-container><a class="download-button"
